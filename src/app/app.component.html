@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>String Calculator</h2>
+
+  <form (ngSubmit)="calculate()" #calcForm="ngForm">
+    <div>
+      <label for="numbers">Enter numbers:</label>
+      <input
+        type="text"
+        id="numbers"
+        name="numbers"
+        [(ngModel)]="numbers"
+        required
+        placeholder="//[delimiter]\n[number1][delimiter][number2]..."
+      />
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="!calcForm.form.valid">Calculate</button>
+      <button type="button" (click)="reset()">Reset</button>
+    </div>
+  </form>
+
+  <div *ngIf="result !== null">
+    <p>Sum: {{ result }}</p>
+  </div>
+
+  <div *ngIf="errorMessage">
+    <p class="error">{{ errorMessage }}</p>
+  </div>
+</div>
